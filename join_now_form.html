@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+
+  <head> 
+    <title>Join now</title> 
+	<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700,200,300' rel='stylesheet' type='text/css'>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--Bootstrap --> 
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link href="css/style11.css" rel="stylesheet" media="screen">
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    
+    <script src="http://code.jquery.com/jquery.js"></script>
+    
+  </head>
+
+<body class="form">
+
+	<div class="container">
+	
+		<!-- OSCAR, Create a dynamic container here.... -->
+		<div id='step1' class='divver' style='display:block;'>
+
+			<form class="" role="search" action="step2">
+
+				<h1>Create Account</h1>
+		
+				<div class="progress">
+					  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="39" aria-valuemin="0" aria-valuemax="100" style="width: 39%">
+						    <span class="sr-only">39% Complete (success)</span>
+					  </div>
+				</div>
+			
+				<input type="text"     class="solo form-control" placeholder="Name"  id='name'>
+				<input type="email"    class="solo form-control" placeholder="Email" id='email'>
+				<input type="password" class="solo form-control" placeholder="Password" id='password'>
+				
+				<input type="button" onclick="step1();" class="submit form-control" value="Continue" >
+			</form>
+		</div>
+
+		<!-- 
+			STEP 2
+		 -->
+		<div id='step2' class='divver' style='display:none;'>
+			<form class="" role="search" action="social_connections.html">
+			<h1>Find Your Contacts</h1>
+
+				<div class="progress">
+				  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="49" aria-valuemin="0" aria-valuemax="100" style="width: 49%">
+				    <span class="sr-only">49% Complete (success)</span>
+				  </div>
+				</div>
+				
+				<input type="text" class="solo form-control" id="phone_number" placeholder="Mobile #">
+				<div class="clear"></div>
+			    
+				<div class="find_your_contacts_text">
+			    	"Find Your Contacts" uses phone numbers from your address book to find the STAFR usernames of your friends.
+			        <br><br>
+					We will NOT spam or auto-add your friends
+					<br><br>
+					Your contacts are stored using mathematical representations rather than actual numbers. We will never use these for anything other than helping you find your friends.
+			    </div>
+
+				<div class="clear"></div>
+			    
+				<input type="button" onclick='step2();' class="submit form-control" value="Continue" >
+			</form>
+		</div>
+	
+		<!-- 
+			STEP 3
+		 -->	
+		<div id='step3'  class='divver' style='display:none;'>
+		
+			<form class="" role="search" action="add_a_picture.html">
+				<h1>Social Connections</h1>
+
+				<div class="progress">
+				  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="59" aria-valuemin="0" aria-valuemax="100" style="width: 59%">
+				    <span class="sr-only">59% Complete (success)</span>
+				  </div>
+				</div>
+				
+				<div class="social_connections_text">
+			    	Grab contacts from your other <br>social sites?
+			    </div>
+			    
+			   <div class="social_connections_text2"> Connect</div>
+				<input style='width:90%' type="button" onclick='getFacebook();' class="solo form-control" value="Facebook">
+				<input style='width:90%' type="button" onclick='getLinkedIn();' class="solo form-control" value="LinkedIn">
+			    <input style='width:90%' type="button" onclick='getTwitter();'  class="solo form-control" value="Twitter">
+				<input style='width:90%' type="button" onclick='getGoogle();'   class="solo form-control" value="Google+">
+				<input type="button" onclick='step3();'       class="submit form-control" value="Continue" />
+			    <input type="button" onClick="$('#step3').hide();$('#step4').show();" class="social_connections_skip" value="Skip">
+			</form>
+		</div>
+		
+		<!-- 
+			STEP 4
+		 -->
+		<div id='step4'  class='divver' style='display:none;'>
+		
+			<form class="" role="search">
+				<h1>Add a Picture</h1>
+				<div class="progress">
+					  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="69" aria-valuemin="0" aria-valuemax="100" style="width: 69%">
+						    <span class="sr-only">69% Complete (success)</span>
+					  </div>
+				</div>
+				
+				<div class="add_a_picture">
+					<img id='avatar' src="images/add_a_picture.jpg">
+				</div>
+				
+				<div class="social_connections_text">
+				    	Add a Picture for 10 points!
+			    </div>
+				    
+				<input type="button" onclick="capturePhoto();" class="add_a_picture_button" value="Take a picture">
+				<input type="button" onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);" class="add_a_picture_button" value="Add from Library">
+				<input type="button" onclick="getFacebook();" class="add_a_picture_button" value="Add from Facebook">   
+				<input type="button" onclick='step4();' class="submit form-control" value="Continue">
+				<input type="button" class="social_connections_skip" onClick="$('#step4').hide();$('#step5').show();" value="Skip" />
+			</form>
+		</div>
+
+		<!-- STEP 5 -->
+		<div id='step5'  class='divver' style='display:none;'>
+			<form class="" role="search" action="ideal_Job.html">
+				<h1>Tell us About You</h1>
+				<div class="progress">
+				  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="79" aria-valuemin="0" aria-valuemax="100" style="width: 79%">
+				    <span class="sr-only">79% Complete (success)</span>
+				  </div>
+				</div>
+				<div class="social_connections_text">
+				    	In order to accurately find jobs for you, we need to know a little bit about you
+			    </div>
+	
+				<input type="text" class="solo form-control" id='current_job' placeholder="Current Job Title">
+				<input type="text" class="solo form-control" id='age' placeholder="Age">
+			    <input type="text" class="solo form-control" id='zipcode' placeholder="Zip Code">
+				
+				<input type="button" onclick='step5();'  class="submit form-control" value="Continue" >
+			</form>
+		</div>		
+
+
+		<!--
+		  STEP 6
+		-->		
+		<div id='step6'  class='divver' style='display:none;'>
+			<form class="" role="search" action="future_job.html">
+			<h1>Ideal Job</h1>
+			<div class="progress">
+			  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="39" aria-valuemin="0" aria-valuemax="100" style="width: 89%">
+			    <span class="sr-only">89% Complete (success)</span>
+			  </div>
+			</div>
+			<div class="social_connections_text">
+			    	What job are you looking for now?
+			    </div>
+				<input type="text" class="solo form-control" id='looking_for' placeholder="Ex: Construction Manager">
+				
+				<input type="button" onclick='step6();'  class="submit form-control" value="Continue" >
+			</form>
+		</div>
+
+
+		<!-- 
+			STEP 7
+		 -->
+		<div id='step7'  class='divver' style='display:none;'>
+			<form class="" role="search" action="home.html">
+				<h1>Future Job</h1>
+				<div class="progress">
+				  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="39" aria-valuemin="0" aria-valuemax="100" style="width: 95%">
+				    <span class="sr-only">39% Complete (success)</span>
+				  </div>
+				</div>
+				<div class="social_connections_text">
+			    	Tell us what job you would like to hold five years from now. Stafr will find jobs to get you to this position.
+			    </div>
+				<input type="text" id='fiveyears' class="solo form-control" placeholder="Ex: Executive VP of Marketing">
+				<input type="button" onclick='step7();'  class="submit form-control" value="Continue" >
+			</form>
+			
+		</div>
+
+		
+	</div>
+
+    
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" charset="utf-8" src="/cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/components/steroids-js/steroids.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+    var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value
+	var sUDID = '';			 // Device UUID
+	
+
+	var gateWay = 'http://gateway.stafr.ozkaa.com';
+	
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready",onDeviceReady,false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() 
+    {
+        
+    	pictureSource    = navigator.camera.PictureSourceType;
+        destinationType  = navigator.camera.DestinationType;
+    
+        sUDID = device.uuid;
+    }
+
+    // Browser testing
+    if( sUDID == '' )
+   	{
+    	sUDID = '12345';
+    }
+    
+    
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoDataSuccess(imageData) 
+    {
+      // Uncomment to view the base64-encoded image data
+      // console.log(imageData);
+
+      // Get image handle
+      //
+      var smallImage = document.getElementById('avatar');
+
+      // Unhide image elements
+      //
+      smallImage.style.display = 'block';
+
+      // Show the captured photo
+      // The inline CSS rules are used to resize the image
+      //
+      smallImage.src = "data:image/jpeg;base64," + imageData;
+    }
+
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoURISuccess(imageURI) 
+    {
+        var smallImage 			 = document.getElementById('avatar');
+        //smallImage.style.display = 'block';
+        smallImage.src 			 = imageURI;
+
+//        alert( smallImage.src );
+        
+    }
+
+    // A button will call this function
+    //
+    function capturePhoto() {
+			//    		alert( 'here' );
+	      // Take picture using device camera and retrieve image as base64-encoded string
+	      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { 
+	    	  	quality: 50,
+    	  		destinationType: 
+    	  		destinationType.DATA_URL });
+    }
+
+    // A button will call this function
+    //
+    function capturePhotoEdit() 
+    {
+	      // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
+	      navigator.camera.getPicture(onPhotoDataSuccess, onFail, 
+	      { 
+	    	  	quality			: 20, 
+	    	  	allowEdit		: true,
+        		destinationType	: destinationType.DATA_URL 
+          });
+    }
+
+    
+    // A button will call this function
+    //
+    function getPhoto(source) 
+    {
+	      // Retrieve image file location from specified source
+	      navigator.camera.getPicture ( onPhotoURISuccess, 
+	    		                        onFail, 
+	      { 
+	    	  quality			: 50,
+			  destinationType	: destinationType.FILE_URI,
+	          sourceType		: source 
+	      });
+    }
+
+    // Called if something bad happens.
+    //
+    function onFail(message) 
+    {
+	      alert('Failed because: ' + message);
+    }
+
+    </script>
+	
+	<script type='text/javascript'>
+		function step1()
+		{
+			// Test Phone & Email to see if the user already exists...
+			
+			iError = 0;
+			if( $("#name").val() == '' )
+			{
+				iError = 1;
+			}
+			if( $("#email").val() == '' )
+			{
+				iError = 1;
+			}
+			if( $("#phone").val() == '' )
+			{
+				iError = 1;
+			}
+			
+			if( iError == 1 )
+			{
+				navigator.notification.alert( 'Please fill out all fields', alertDismissed, 'Error', 'OK' );			
+				// alert( "Please fill out all fields");
+				// $(".divver").hide();
+				// $("#step2").show();
+			} else {
+				$(".divver").hide();
+				$("#step2").show();
+			}
+			
+		}
+		
+		function step2()
+		{
+			if( $("#phone_number").val() == "" )
+			{
+				navigator.notification.alert( 'Please provide a phone number', alertDismissed, 'Error', 'OK' );			
+			} else {
+				$("#step2").hide();
+				$("#step3").show();
+				window.scrollTo(0,0);
+				
+			}
+		}
+
+		function step3()
+		{
+			$("#step3").hide();
+			$("#step4").show();
+			window.scrollTo(0,0);
+		}
+		
+		function step4()
+		{
+			$("#step4").hide();
+			$("#step5").show();
+			window.scrollTo(0,0);
+		}
+		
+		function step5()
+		{
+			var iError = 0;
+			
+			if ( $("#current_job").val() == '' )
+			{
+				iError = 1;
+			}
+
+			if ( $("#age").val() == '' )
+			{
+				iError = 1;
+			}
+
+			if ( $("#zipcode").val() == '' )
+			{
+				iError = 1;
+			}
+
+			if( iError == 0 )
+			{
+				$("#step5").hide();
+				$("#step6").show();			
+				window.scrollTo(0,0);
+			} else {
+				navigator.notification.alert( 'Please fill out all fields', alertDismissed, 'Error', 'OK' );			
+			}
+
+		}
+		
+		function step6()
+		{
+			if( $("looking_for").val() == '' )
+			{
+				navigator.notification.alert( 'Please fill out this field', alertDismissed, 'Error', 'OK' );			
+			} else {
+				$("#step6").hide();
+				$("#step7").show();
+				window.scrollTo(0,0);
+				
+			}
+		}
+		
+		function step7()
+		{
+
+			if( $("#fiveyears").val() == "" )
+			{
+				navigator.notification.alert( 'Please fill out this field', alertDismissed, 'Error', 'OK' );			
+			} else {
+				/**
+				 * DATA TO BE SHOT OVER
+					<input type="text" class="solo form-control" placeholder="Name"  id='name'>
+					<input type="text" class="solo form-control" placeholder="Email" id='email'>
+					<input type="text" class="solo form-control" placeholder="Phone" id='password'>
+					<input type="text" class="solo form-control" placeholder="Mobile #">
+					<input type="text" class="solo form-control" placeholder="Current Job Title">
+					<input type="text" class="solo form-control" placeholder="Age">
+				    <input type="text" class="solo form-control" placeholder="Zip Code">
+					<input type="text" class="solo form-control" placeholder="Ex: Construction Manager">
+					IMAGE
+				 */
+	
+				 // Send Data to API
+				 $.ajax({
+					  url  		: gateWay + "/users",
+					  dataType  : "json",
+					  type      : "POST",
+					  data 		: { 
+						                method       : 'addUser',
+						                nickname	 : $("#name").val(),
+							  			email	     : $("#email").val(),
+							  			password     : $("#password").val(),
+							  			phone_number : $("#phone_number").val(),
+							  			avatar		 : $("#avatar").val(),
+							  			current_job  : $("#current_job").val(),
+							  			age          : $("#age").val(),
+							  			zipcode      : $("#zipcode").val(),
+							  			fiveyears	 : $("#fiveyears").val(),
+							  			looking_for	 : $("#looking_for").val(),
+							  			points       : '10',
+							  			uuid		 : sUDID
+					  },
+					  success 	: function( data ) 
+					  {
+				        	if( data.success == true )
+				        	{
+				        	    // Now Login
+				        	   
+				        	    $.ajax({
+									  url  		: gateWay + "/users",
+									  dataType  : "json",
+									  type      : "POST",
+									  data 		: 
+									  { 
+							              method       : 'login',
+							              password     : $("#password").val(),
+							  			  phone_number : $("#phone_number").val(),
+								  		  uuid	 	   : sUDID,
+									  },
+									  success: function( data )
+									  {
+											if( data.success == true )
+											{
+												// Set the access token
+												window.localStorage.setItem("access_token", data.accessToken );
+												window.localStorage.setItem("user_id", data.userId );
+												
+												// Throw some message
+												navigator.notification.alert( 'Welcome new member', alertDismissed, 'Welcome', 'OK' );			
+												
+												// Now redirect
+												window.location='home.html';
+											} else {
+												// Uh ohh
+												navigator.notification.alert( 'Could not log you in', alertDismissed, 'Error', 'OK' );			
+											}
+									  }
+				        	    });
+				        	    
+				    			// Send Remainder data with userID and Auth Code..
+				        	   
+				        	} else {
+								navigator.notification.alert( 'An error has occured, Account probably already exists....', alertDismissed, 'Error', 'OK' );			
+				        	}
+					          				  
+					  }
+	   			}); 
+			}
+			
+		}
+
+		function alertDismissed() 
+		{
+	            // do something
+	    }
+		
+		/**
+		 *
+			<input type="button" onclick='getFacebook();' class="solo form-control" placeholder="Facebook">
+			<input type="button" onclick='getLinkedIn();' class="solo form-control" placeholder="Linkedin">
+		    <input type="button" onclick='getTwitter();' class="solo form-control" placeholder="Twitter">
+			<input type="button" onclick='getGoogle();' class="solo form-control" placeholder="Google+">
+		 */
+
+		 function getFacebook()
+		 {
+			 alert( "Facebook Being implemented" );
+		 }
+		 function getLinkedIn()
+		 {
+			 alert( "LinkedIn Being implemented" );
+		 }
+		 function getTwitter()
+		 {
+			 alert( "Twitter Being implemented" );
+		 }
+		 function getGoogle()
+		 {
+			 alert( "Google+ Being implemented" );
+		 }
+		 
+	</script>	
+
+  </body>
+  
+</html>

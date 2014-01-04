@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html>
+  <head> 
+    <title>Find a Job</title> 
+	<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700,200,300' rel='stylesheet' type='text/css'>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--Bootstrap --> 
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+	<link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" media="screen">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+
+
+    <!-------------see_more------------->
+	<script type='text/javascript'>//<![CDATA[ 
+		$(window).load(function()
+		{
+
+			// Disables the backbutton
+			document.ontouchmove = function(e) 
+			{
+					e.preventDefault()
+			};
+				
+			$(".medianavbttn").on("click", function()
+			{
+			    $(".medianav").slideToggle("slow");
+			});
+		});//]]>  
+</script>
+  
+  <style type='text/css'>
+    .medianavbttn 
+    {
+		display	: block;
+		width	: 100%;
+		cursor	: pointer;
+	}
+		
+	.medianav {
+		display: none;
+		width: 100%;
+	}
+  </style>
+   <!------------see_more--------[end]-----> 
+    
+    
+  </head>
+<body id="job-search">
+<div class="container">
+<div class="navbar-header navbar-header-top" >
+		<button type="button" class="btn btn-default navbar-btn button-1">Share this Job</button>
+		<button type="button" class="btn btn-default navbar-btn button-2">Cancel</button>
+</div>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <ul class="nav navbar-nav">
+		<li class="li-1"><a href="#"><span class="badge">354</span><br> Points</a></li>
+		<li class="li-2"><a href="post.html"><i class="icon-plus"></i>Post</a></li>
+	</ul>
+</nav> 
+<button id="share" type="button" onClick="window.location.href='share.html'">Share</button>
+<button id="save" type="button" onClick="window.location.href='saved_jobs.html'">Save</button>
+
+<div id='x' style='width:60%; height:60%; overflow:auto; margin-top:10%; margin-left:10%;'>
+	<div id="job-1" class="round-1">
+		<div class="jumbotron">
+			<form class="hidden">
+				<input type="hidden" class="click-1" name="click-1" value="" />
+				<input type="hidden" class="click-2" name="click-2" value="" />
+				<input type="hidden" class="click-3" name="click-3" value="" />
+			</form>
+			<span data="1" class="span-1">Contract Work<br>Second Line Here<span class="circle circle-01"></span></span>
+			<span data="2" class="span-2">Restaurant<br>Industry<span class="circle circle-02"></span></span>
+			<span data="3" class="span-3">Located In:<br>Irvine,CA<span class="circle circle-03"></span></span>
+			<div class="circle-1"> 
+				<div class="circle-2">
+					<h1>Job</h1>
+				</div>
+			</div>
+			
+		</div>		
+	</div>
+
+
+<div id="job-2" class="round-1">
+	<div class="jumbotron">
+		<form class="hidden">
+			<input type="hidden" class="click-1" name="click-1" value="" />
+			<input type="hidden" class="click-2" name="click-2" value="" />
+			<input type="hidden" class="click-3" name="click-3" value="" />
+		</form>
+		<span data="1" class="span-1">Super Contract Work<br>Second Line Here<span class="circle circle-01"></span></span>
+		<span data="2" class="span-2">Super Restaurant<br>Industry<span class="circle circle-02"></span></span>
+		<span data="3" class="span-3">Located In:<br>Conroe, TX<span class="circle circle-03"></span></span>
+		<div class="circle-1">
+			<div class="circle-2">
+				<h1>Jo2</h1>
+			</div>
+		</div>
+		
+	</div>		
+</div>
+<div id="job-3" class="round-1">
+	<div class="jumbotron">
+		<form class="hidden">
+			<input type="hidden" class="click-1" name="click-1" value="" />
+			<input type="hidden" class="click-2" name="click-2" value="" />
+			<input type="hidden" class="click-3" name="click-3" value="" />
+		</form>
+		<span data="1" class="span-1">Third Contract Work<br>Second Line Here<span class="circle circle-01"></span></span>
+		<span data="2" class="span-2">Third Restaurant<br>Industry<span class="circle circle-02"></span></span>
+		<span data="3" class="span-3">Located In:<br>Gran Alancant,ES<span class="circle circle-03"></span></span>
+		<div class="circle-1">
+			<div class="circle-2">
+				<h1>Jo3</h1>
+			</div>
+		</div>
+		
+	</div>		
+</div>
+<div id="job-4" class="round-1">
+	<div class="jumbotron">
+		<form class="hidden">
+			<input type="hidden" class="click-1" name="click-1" value="" />
+			<input type="hidden" class="click-2" name="click-2" value="" />
+			<input type="hidden" class="click-3" name="click-3" value="" />
+		</form>
+		<span data="1" class="span-1">Contract Work<br>Second Line Here<span class="circle circle-01"></span></span>
+		<span data="2" class="span-2">Restaurant<br>Industry<span class="circle circle-02"></span></span>
+		<span data="3" class="span-3">Located In:<br>Irvine,CA<span class="circle circle-03"></span></span>
+		<div class="circle-1">
+			<div class="circle-2">
+				<h1>Jo4</h1>
+			</div>
+		</div>
+		
+	</div>		
+</div>
+<div id="job-5" class="round-1">
+	<div class="jumbotron">
+		<form class="hidden">
+			<input type="hidden" class="click-1" name="click-1" value="" />
+			<input type="hidden" class="click-2" name="click-2" value="" />
+			<input type="hidden" class="click-3" name="click-3" value="" />
+		</form>
+		<span data="1" class="span-1">Contract Work<br>Second Line Here<span class="circle circle-01"></span></span>
+		<span data="2" class="span-2">Restaurant<br>Industry<span class="circle circle-02"></span></span>
+		<span data="3" class="span-3">Located In:<br>Irvine,CA<span class="circle circle-03"></span></span>
+		<div class="circle-1">
+			<div class="circle-2">
+				<h1>Jo5</h1>
+			</div>
+		</div>
+		
+	</div>		
+</div>
+
+</div>
+
+
+<div id="round-2">
+	<div class="jumbotron">
+		<span class="span-1">Something Else<br>Over Here<span class="circle circle-01"></span></span>
+		<span class="span-2">Another<br>Atribute Here<span class="circle circle-02"></span></span>
+		<!--<span class="span-3">Located In:<br>Irvine,CA<span class="circle circle-03"></span></span>-->
+		<div class="circle-1">
+			<div class="circle-2">
+				<h1>Job</h1>
+			</div> 
+		</div>
+	</div>	
+</div>
+
+
+
+<div id="jobs"> 
+<div class="container">
+	<div id="wrapper"> 
+	<div id="article-wrapper">
+
+	<article id="article-1"> 
+		<h1>Sales Manager</h1>
+		<h2>Oracle</h2>
+		<p>The sales manager position at Oracle located in Redwood City, CA is a full time position. You will be responsible for overseeing your specified sales team.  The ideal candidate will have 3-5 years experience working as a sales manager in the technology field 
+		</p>
+        
+		<div class="medianavbttn">
+   
+    
+	    <input type="button" class="See_more_details showbsutton" value="See more details">
+    
+   		<div class="clear"></div>
+
+		<div class="medianav">
+		<img src="images/movi.jpg" alt="">
+			    <ul>
+				<li>Restaurant <br>Industry
+				<span class="circle"></span></li>
+				<li>Restaurant <br>Industry
+				<span class="circle"></span></li>
+				<li>Restaurant <br>Industry
+				<span class="circle"></span></li>
+				<li>Restaurant <br>Industry
+				<span class="circle"></span></li>
+				<li>Restaurant <br>Industry
+				<span class="circle"></span></li>
+				<li>Restaurant <br>Industry
+				<span class="circle"></span></li>
+			
+			</ul>
+		<div class="div-10"></div>
+		</div>
+
+
+	</div>
+		<br style="clear: both">
+		<div class="div-button">
+		<button type="button" class="btn btn-default" onClick="window.location.href='apply.html'">Apply</button><br>
+		<button type="button" class="btn btn-default" onClick="window.location.href='share.html'">Share</button><br>
+		<button type="button" class="btn btn-default" onClick="window.location.href='home.html'">Skip</button>
+		</div>
+	</article>		
+	</div>	
+	</div>
+</div>
+</div>
+
+<div class="navbar-header navbar-header-bottom">
+		<button type="button" class="btn btn-default">Save</button>
+		<button type="button" class="btn btn-default">Cancel</button>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+    <ul class="nav navbar-nav">
+		<li class="li-3"><a href="notifications.html">Notifications<i class="icon-envelope"></i><span class="badge">1</span></a></li>
+		<li class="li-4"><a href="settings.html">Settings<i class="icon-cog"></i></a></li>
+	</ul>
+</nav>  
+
+</div>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+	<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+	<script src="js/script.js"></script>
+  </body>
+</html>

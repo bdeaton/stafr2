@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head> 
+    <title>Welcome Back</title> 
+	<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700,200,300' rel='stylesheet' type='text/css'>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--Bootstrap --> 
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+	<link href="css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+	<link href="css/font-awesome.css" rel="stylesheet">
+    
+    <link href="css/style11.css" rel="stylesheet" media="screen">
+
+	<script type="text/javascript" charset="utf-8" src="/cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/components/steroids-js/steroids.js"></script>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+    
+  </head>
+  
+  <body class="form">
+	<div class="container">
+	
+	<form class="" role="search" action="home.html">
+
+		<h1>Welcome Back</h1>
+		
+			<input type="text" class="solo form-control" placeholder="Phone" id='phone_number'>
+			<input type="password" class="solo form-control" placeholder="Password" id='password'>
+			
+			<input type="button" onclick='login();' class="submit form-control" value="Log In" >
+		    
+		    <!--<div class="remember_me">
+		    <h2>Remember Me</h2>
+		    <span>
+					<input type="checkbox">
+				</span>
+		    </div>-->
+		    <div class="clear"></div>
+
+		    <h3>Don't have an account? <a href="join_now_form.html">Join Now</a></h3>
+		    
+		</form>
+		
+	</div>
+	
+    
+    <script type='text/javascript'>
+
+	var sUDID = '';
+	var gateWay = 'http://gateway.stafr.ozkaa.com';
+	
+	// Wait for device...
+	document.addEventListener("deviceready", onDeviceReady, false);
+	
+	//onDeviceReady()
+	
+	function onDeviceReady() 
+	{
+		
+		// get the device UUID
+		sUDID = device.uuid;
+
+		if( sUDID == '' )
+		{
+			sUDID = '123456789';
+		}
+		
+		// Checked access token
+		if( window.localStorage.getItem( "user_id" ) > '' )
+		{
+			//alert( 'here' );
+			// Test to see if the access token still works?	
+			//		alert( window.localStorage.getItem("access_token") );
+			//alert( 'here' );
+			//alert( window.localStorage.getItem( "access_token" ) );
+			$.ajax({
+				  url  		: gateWay + "/users",
+				  type      : 'POST',
+				  dataType  : "json",
+				  data 		: 
+				  { 
+			                method       : 'checkToken',
+			                access_token : window.localStorage.getItem( "access_token" ),
+				  			user_id      : window.localStorage.getItem( "user_id" ),
+				  			uuid	 	 : sUDID,
+				  },
+				  success 	: function( data ) 
+				  {
+						//alert( data.success );
+				      	if( data.success == true )
+				      	{
+							// Store everything inside the local database
+							window.localStorage.setItem( "access_token", data.payload.accessToken );
+							window.localStorage.setItem( "user_id", data.payload.userId );
+
+							//alert( window.localStorage.getItem( 'user_id') );
+							
+							// Login success, move to home.html
+				      	    window.location = 'home.html';
+				      	   
+				      	} else {
+				      		//alert( 'Session Expired, Please re-log back in' );   
+				      	}
+				          				  
+				  },
+				  error	: function( jqXHR, textStatus, errorThrown )
+				  {
+					  alert( 'Debug Problem: ' + jqXHR.responseText );
+				  }
+			}); 		
+		}
+		
+		
+	}
+
+
+	/**
+	 * Login
+	 * @author Oscar Frowijn
+	 * @desc 
+	 */
+	function login()
+	{
+		//	alert( 'loggin in' );
+		var sQueryAdd = '&uuid=' + sUDID
+
+		// Browser testing only
+		//		if( sUDID == '' )
+		//	{
+		//sUDID='12343434';
+		//}
+		
+		$.ajax({
+			  url  		: gateWay + "/users",
+			  type     : 'POST',
+			  dataType : "json",
+			  data 		: 
+			  { 
+				                method       : 'login',
+					  			password     : $("#password").val(),
+					  			phone_number : $("#phone_number").val(),
+					  			uuid	 	 : sUDID,
+					  			
+			  },
+			  success 	: function( data ) 
+			  {
+			      	if( data.success == true )
+			      	{
+						// Store everything inside the local database
+						window.localStorage.setItem( "access_token", data.payload.accessToken );
+						window.localStorage.setItem( "user_id", data.payload.userId );
+
+						// Login success, move to home.html
+			      	    window.location = 'home.html';
+			      	   
+			      	} else {
+			      		alert( 'Could not log you in....' );   
+			      	}
+			          				  
+			  },
+			  error	: function( jqXHR, textStatus, errorThrown )
+			  {
+				  alert( 'Problem: ' + errorThrown );
+			  }
+			}); 		
+	}
+
+</script>
+  </body>
+</html>

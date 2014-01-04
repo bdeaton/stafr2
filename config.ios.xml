@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.appgyver.helloSteroids" version="2.0.0" xmlns="http://www.w3.org/ns/widgets">
+    <name>Stafr</name>
+    <description>
+        Stafr
+    </description>
+    <author email="oscar@ozkaa.com" href="http://stafr.gateway.ozkaa.com">
+        Stafr Development team
+    </author>
+    <access origin="*" />
+    <preference name="AllowInlineMediaPlayback" value="true" />
+    <preference name="DisallowOverscroll" value="false" />
+    <preference name="EnableViewportScale" value="false" />
+    <preference name="HideKeyboardFormAccessoryBar" value="false" />
+    <preference name="KeyboardDisplayRequiresUserAction" value="false" />
+    <preference name="KeyboardShrinksView" value="false" />
+    <preference name="SuppressesIncrementalRendering" value="false" />
+
+
+    <preference name="PaginationMode" value="unpaginated"/>
+    <preference name="PageLength" value="0"/>
+    <preference name="PaginationBreakingMode" value="page"/>
+    <preference name="GapBetweenPages" value="0"/>
+</widget>

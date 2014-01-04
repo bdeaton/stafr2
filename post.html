@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+  <head> 
+    <title>Post a Job</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700,200,300' rel='stylesheet' type='text/css'>
+    <!--Bootstrap --> 
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+    <link href="css/style11.css" rel="stylesheet" media="screen">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" charset="utf-8" src="/cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/components/steroids-js/steroids.js"></script>
+
+
+  </head>
+<body class="form">
+<div class="container">
+
+<div id='dv1' style='display:block;'>
+	<!------------apply_back_icon---------------->
+	<div class="apply_back_icon">
+		<a href="home.html">
+			<img src="images/back.png">
+		</a>
+	</div>
+	<!------------apply_back_icon---------[end]------->
+	
+	<div class="apply_header">
+	  <i class="icon-plus plus_size" style="font-size:100px;"></i>
+	</div>
+
+	<form class="" role="search" action="post_job.html">
+		
+		<h1>Post</h1>
+	
+		<input type="text" id='position' class="solo form-control" placeholder="Position">
+	    <input type="text" id='company' class="solo form-control" placeholder="Company">
+		<input type="text" id='location' class="solo form-control" placeholder="Location">
+	    <input type="text" id='compensation' class="solo form-control" placeholder="Compensation Range">
+		
+		<textarea id='description' class="form-control" placeholder="Write why you think you would be a good candidate for this job. Maximum of 140 characters"></textarea>
+		<h2>Add a 10 sec. video?</h2>
+	    <div class="uplode">
+	    
+	    	<div class="uplode_video" onclick='captureVid();'>Upload a video</div>
+	    
+	        <div class="uplode_take_video"  onclick='captureVid();'>Take a Video</div>
+	        
+	    </div>
+		<input type="button" onclick="step1();" class="submit form-control" value="Continue">
+	    
+	</form>
+</div>
+
+<div id='dv2' style='display:none;'>
+	<div class="apply_back_icon">
+		<a href="#" onclick="$('#dv2').hide();$('#dv1').show();">
+			<img src="images/back.png">
+		</a>
+	</div>
+
+	<!------------apply_back_icon---------[end]------->
+	
+	<div class="apply_header">
+	  <i class="icon-plus plus_size" style="font-size:100px;"></i>
+	</div>
+	
+	<form class="" role="search" action="home.html">
+	<h1>Post a Job</h1>
+	
+		<div class="social_connections_text">
+	    	Who is your connection?
+	    </div>
+	
+		<input type="text" id='name' class="solo form-control" placeholder="Name" />
+	    <input type="text" id='phone' class="solo form-control" placeholder="Phone" />
+		<input type="text" id='email' class="solo form-control" placeholder="Email" />
+		
+		<input type="button" onclick="step2();" class="submit form-control" value="Post" />
+		
+	</form>
+
+</div>
+
+</div>
+	<!-- 
+	<script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+	<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="js/form.js"></script>
+	 -->
+
+	<script type='text/javascript'>
+	
+		var videoPath = '';
+		var gateWay = 'http://gateway.stafr.ozkaa.com';
+
+		
+		function step1()
+		{
+			iError = 0;
+			if( $("#position").val() == '' )
+			{
+				iError = 1;			
+			}
+			if( $("#company").val() == '' )
+			{
+				iError = 1;			
+			}
+			if( $("#location").val() == '' )
+			{
+				iError = 1;			
+			}
+			if( $("#compensation").val() == '' )
+			{
+				iError = 1;			
+			}
+
+			if( $("#description").val() == '' )
+			{
+				iError = 1;			
+			}
+			
+			if( iError == 1 )
+			{
+				navigator.notification.alert( 'Please fill out all fields....', alertDismissed, 'Error', 'OK' );			
+			} else {
+				$('#dv1').hide();$('#dv2').show();window.scrollTo(0,0);
+			}
+		}
+		
+		
+		function step2()
+		{
+			//alert( window.localStorage.getItem( "user_id") );
+		
+			iError = 0;
+			
+			if( $("#name").val() == '' )
+			{
+				iError = 1;			
+			}
+			if( $("#phone").val() == '' )
+			{
+				iError = 1;			
+			}
+			if( $("#email").val() == '' )
+			{
+				iError = 1;			
+			}
+			if( iError == 1 )
+			{
+				navigator.notification.alert( 'Please fill out all fields....', alertDismissed, 'Error', 'OK' );			
+			
+			} else {
+				$.ajax({
+					  url  		: gateWay + "/jobs",
+					  type      : 'POST',
+					  dataType  : "json",
+					  data 		: 
+					  { 
+			                method       : 'postJob',
+			                access_token : window.localStorage.getItem( "access_token" ),
+				  			user_id      : window.localStorage.getItem( "user_id" ),
+				  			position	 : $("#position").val(),
+				  			company	 	 : $("#company").val(),
+				  			location	 : $("#location").val(),
+				  			compensation : $("#compensation").val(),
+				  			description	 : $("#description").val(),
+				  			name	 	 : $("#name").val(),
+				  			phone	 	 : $("#phone").val(),
+				  			email	 	 : $("#email").val(),
+				  			video	 	 : '',
+					  },
+					  success 	: function( data ) 
+					  {
+							//alert( data.success );
+					      	if( data.success == true )
+					      	{
+								// Store everything inside the local database
+								// window.localStorage.setItem( "access_token", data.payload.accessToken );
+								// window.localStorage.setItem( "user_id", data.payload.userId );
+	
+								// Upload video if any
+								if( videoPath > '' )
+								{
+									var options = new FileUploadOptions();
+						            options.fileKey  = "file";
+						            options.fileName = videoPath.substr(videoPath.lastIndexOf('/')+1);
+						            var params = new Object();
+						            
+						            alert( window.localStorage.getItem( "user_id" ) );
+						            
+						            params.user_id      = window.localStorage.getItem( "user_id" );
+						            params.access_token = window.localStorage.getItem( "access_token" );
+						            params.method       = 'upload';
+						            options.params      = params;
+						            options.chunkedMode = false;
+						            var ft = new FileTransfer();
+						            ft.upload( videoPath, "http://gateway.stafr.ozkaa.com/jobs", win, fail, options );
+								}
+								
+
+								// Redirection
+								//window.location='home.html';
+								
+					      	} else {
+					      		//alert( 'Session Expired, Please re-log back in' );   
+								navigator.notification.alert( 'Could not post the job:(', alertDismissed, 'Error', 'OK' );			
+					      	}
+					          				  
+					  },
+					  error	: function( jqXHR, textStatus, errorThrown )
+					  {
+						  alert( 'Debug Problem: ' + jqXHR.responseText );
+					  }
+				}); 		
+			}
+		
+		}
+		
+		 function win(r) {
+				// Login success, move to home.html
+				navigator.notification.alert( 'Job posted, You have earned points!', alertDismissed, 'Success', 'OK' );			
+
+				alert("Code = " + r.responseCode);
+	            alert("Response = " + r.response);
+	            alert("Sent = " + r.bytesSent);
+	            alert(r.response);
+	        }
+	 
+	        function fail(error) {
+	            alert("An error has occurred: Code = " = error.code);
+	        }
+		
+		
+		
+		function alertDismissed() 
+		{
+			// do something
+		}
+
+		
+		
+		function captureVid()
+		{
+			//alert( 'here' );
+			var options = { limit: 1, duration: 10 };
+
+			navigator.device.capture.captureVideo( captureSuccess, captureError, options );
+			//alert( 'nothere' );
+		}
+
+		
+		var captureSuccess = function( mediaFiles ) 
+		{
+		    var i, path, len;
+		    for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+		        path = mediaFiles[i].fullPath;
+		        // do something interesting with the file
+		        //alert( path );
+		        videoPath = path;
+		    }
+		    
+		};
+
+		// capture error callback
+		var captureError = function( error ) 
+		{
+		    navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
+		};
+		
+		
+	</script>
+	
+  </body>
+  
+</html>

@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.appgyver.helloSteroids" version="2.0.0" xmlns="http://www.w3.org/ns/widgets">
+  <name>Stafr</name>
+  <description>
+      Stafr
+  </description>
+  <author email="oscar@ozkaa.com" href="http://gateway.stafr.ozkaa.com">
+      Stafr Development Team
+  </author>
+  <access origin="*" />
+</widget>
